@@ -24,8 +24,7 @@ render_with_liquid: false
 
 加密方式示例：
 
-````markdown
-```js
+````js
 // 导入 crypto-js 库
 const CryptoJS = require("crypto-js");
 
@@ -84,7 +83,6 @@ const code = new ActivationCode();
 code.newPassword();
 code.newCiphertextKey();
 code.newQrcode();
-```
 ````
 
 这段代码是用JavaScript编写的，使用了crypto-js库来处理MD5和AES加密。实现了一个生成激活码和相关信息的类。
@@ -103,8 +101,7 @@ code.newQrcode();
 ## 解密方式
 知道了加密方式，我们可以尝试解密激活码。
 
-````markdown
-```js
+````js
 // 导入 crypto-js 库
 const CryptoJS = require("crypto-js");
 
@@ -150,7 +147,6 @@ const ciphertextKey = md5(urlParams["_k"] + deviceId);
 const decryptedPassword = re.a.decrypt(urlParams["_p"], ciphertextKey);
 
 console.log("Decrypted Password:", decryptedPassword); // 打印解密后的激活码
-```
 ````
 
 通过这个，我们得出了激活码为`137453`。
