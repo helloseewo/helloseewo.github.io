@@ -16,10 +16,10 @@ timezone: Asia/Shanghai
 
 title: HelloSeewo # the main title
 
-tagline: 对于Seewo的一些奇怪研究 # it will display as the sub-title
+tagline: 对于希沃(Seewo)软件的一些奇怪研究 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  昨日无需留恋，不求所来，但思将往。
+  对于希沃(Seewo)软件的一些奇怪研究
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -38,7 +38,7 @@ social:
   email: # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username # change to your twitter homepage
+    - https://twitter.com # change to your twitter homepage
     - https://github.com/0eromacyS # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
