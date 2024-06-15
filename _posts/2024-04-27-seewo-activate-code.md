@@ -1,5 +1,5 @@
 ---
-title: 对于希沃管家激活码的研究|已失效
+title: 对于希沃管家激活码的研究
 author: Sirin
 date: 2024-04-27 09:24:00 +0800
 categories: [希沃管家, 激活码, 解密]
@@ -7,7 +7,9 @@ tags: [希沃管家]
 render_with_liquid: false
 ---
 
-**本文发布于2024-04-27，当前该方法已被修复！**
+~~**本文发布于2024-04-27，当前该方法已被修复！**~~
+
+**抱歉，眼瞎看错了。**
 
 对于希沃管家激活码的研究。
 
@@ -152,3 +154,6 @@ console.log("Decrypted Password:", decryptedPassword); // 打印解密后的激�
 ````
 
 通过这个，我们得出了激活码为`137453`。
+
+## 我不知道为什么这个链接会出现在这
+https://helloseewo.github.io/dec
