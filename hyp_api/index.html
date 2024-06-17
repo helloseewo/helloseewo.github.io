@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!--
+这个网页只是用于测试某二刺猿画风游戏厂商游戏启动器的api，仅供娱乐！！！
+-->
+
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HYP API test page</title>
+    <style>
+        /* css */
+    </style>
+    <script>
+        window.onload = function () {
+            var launcherSelect = document.getElementById('launcher_id');
+            launcherSelect.onchange = function () {
+                var gameOptions = document.getElementById('gameOptions');
+                var gameSelect = document.getElementById('game_id');
+                gameSelect.innerHTML = '<option value="blank">请选择launcher_id</option>';
+
+                if (this.value === 'blank') {
+                    gameSelect.innerHTML = '<option value="blank">请选择launcher_id</option>';
+                } else if (this.value === 'jGHBHlcOq1') {
+                    gameSelect.innerHTML = '<option value="1Z8W5NHUQb">原神</option>' +
+                        '<option value="64kMb5iAWu">崩坏：星穹铁道</option>' +
+                        '<option value="osvnlOc0S8">崩坏3</option>' +
+                        '<option value="x6znKlJ0xK">绝区零</option>';
+                } else if (this.value === 'VYTpXlbWo8') {
+                    gameSelect.innerHTML = '<option value="gopR6Cufr3">原神</option>' +
+                        '<option value="4ziysqXOQ8">崩坏：星穹铁道</option>' +
+                        '<option value="5TIVvvcwtM">崩坏3</option>' +
+                        '<option value="U5hbdsT9W7">绝区零</option>';
+                }
+            };
+
+            var confirmButton = document.getElementById('confirm_button');
+            var iframe = document.getElementById('result_iframe');
+
+            confirmButton.onclick = function() {
+                var gameSelect = document.getElementById('game_id');
+                var game_id = gameSelect.value;
+                var launcher_id = launcherSelect.value;
+                if (game_id !== 'blank') {
+                    var url = (launcher_id === 'jGHBHlcOq1') ?
+                        'https://hyp-api.mihoyo.com/hyp/hyp-connect/api/getGamePackages?game_ids[]=' + game_id + '&launcher_id=jGHBHlcOq1' :
+                        'https://sg-hyp-api.hoyoverse.com/hyp/hyp-connect/api/getGamePackages?game_ids[]=' + game_id + '&launcher_id=VYTpXlbWo8';
+                    iframe.src = url;
+                }
+            };
+        };
+    </script>
+</head>
+
+<body>
+    <label for="launcher_id">选择launcher_id：</label>
+    <select id="launcher_id">
+        <option value="blank">请选择launcher_id</option>
+        <option value="jGHBHlcOq1">国服</option>
+        <option value="VYTpXlbWo8">海外</option>
+    </select>
+
+    <div id="gameOptions">
+        <label for="game_id">选择game_id：</label>
+        <select id="game_id">
+            <option value="blank">请选择launcher_id</option>
+        </select>
+    </div>
+
+    <button id="confirm_button">确认</button>
+
+    <div id="iframeContainer">
+        <iframe id="result_iframe" src="about:blank"></iframe>
+    </div>
+</body>
+
+</html>
