@@ -10,7 +10,14 @@
     <meta charset="UTF-8">
     <title>HYP API test page</title>
     <style>
-        /* css */
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: monospace;
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
     </style>
     <script>
         window.onload = function () {
@@ -38,7 +45,7 @@
             var confirmButton = document.getElementById('confirm_button');
             var iframe = document.getElementById('result_iframe');
 
-            confirmButton.onclick = function() {
+            confirmButton.onclick = function () {
                 var gameSelect = document.getElementById('game_id');
                 var game_id = gameSelect.value;
                 var launcher_id = launcherSelect.value;
@@ -46,7 +53,22 @@
                     var url = (launcher_id === 'jGHBHlcOq1') ?
                         'https://hyp-api.mihoyo.com/hyp/hyp-connect/api/getGamePackages?game_ids[]=' + game_id + '&launcher_id=jGHBHlcOq1' :
                         'https://sg-hyp-api.hoyoverse.com/hyp/hyp-connect/api/getGamePackages?game_ids[]=' + game_id + '&launcher_id=VYTpXlbWo8';
-                    iframe.src = url;
+
+                    fetch(url)
+                        // 可有可无的错误处理
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Network response was not ok ' + response.statusText);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('result_code').textContent = JSON.stringify(data, null, 2);
+                        })
+                        .catch(error => {
+                            console.error('There has been a problem with your fetch operation:', error);
+                            document.getElementById('result_code').textContent = 'Error: ' + error.message;
+                        });
                 }
             };
         };
@@ -70,8 +92,10 @@
 
     <button id="confirm_button">确认</button>
 
-    <div id="iframeContainer">
-        <iframe id="result_iframe" src="about:blank"></iframe>
+    <div id="result_container">
+        <pre>
+            <code id="result_code"></code>
+        </pre>
     </div>
 </body>
 
